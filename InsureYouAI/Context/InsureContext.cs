@@ -18,6 +18,7 @@ public class InsureContext : DbContext
     public DbSet<Message> Messages { get; set; }
     public DbSet<PricingPlan> PricingPlans { get; set; }
     public DbSet<Service> Services { get; set; }
+    public DbSet<Slider> Sliders { get; set; }
     public DbSet<Testimonial> Testimonials { get; set; }
     public DbSet<TrailerVideo> TrailerVideos { get; set; }
 }
