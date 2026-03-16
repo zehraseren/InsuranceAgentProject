@@ -1,4 +1,13 @@
+using InsureYouAI.Context;
+using InsureYouAI.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Register DbContext
+builder.Services.AddDbContext<InsureContext>();
+
+// Configure AutoMapper
+builder.Services.AddMappings();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
