@@ -14,6 +14,7 @@ public static class MappingRegistrar
             cfg.AddProfile<ContactMapping>();
             cfg.AddProfile<MessageMapping>();
             cfg.AddProfile<PricingPlanMapping>();
+            cfg.AddProfile<ServiceMapping>();
         });
 
         return services;
