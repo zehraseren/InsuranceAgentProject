@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using InsureYouAI.Configuration.Mapping;
+﻿using InsureYouAI.Configuration.Mapping;
 
 namespace InsureYouAI.Configuration;
 
@@ -9,6 +8,7 @@ public static class MappingRegistrar
     {
         services.AddAutoMapper(cfg =>
         {
+            cfg.AddProfile<CategoryMapping>();
         });
 
         return services;
