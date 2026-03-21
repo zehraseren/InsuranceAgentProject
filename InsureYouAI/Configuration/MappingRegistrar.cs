@@ -9,6 +9,7 @@ public static class MappingRegistrar
         services.AddAutoMapper(cfg =>
         {
             cfg.AddProfile<CategoryMapping>();
+            cfg.AddProfile<AboutMapping>();
         });
 
         return services;
