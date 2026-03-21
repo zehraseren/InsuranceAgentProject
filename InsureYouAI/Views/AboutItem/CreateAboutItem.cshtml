@@ -1,0 +1,26 @@
+﻿@model CreateAboutItemDto
+
+@{
+    ViewData["Title"] = "CreateAboutItem";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex align-items-center">
+            <h5 class="mb-0">Yeni Hakkımızda Maddesi Ekleme</h5>
+            <br />
+            <br />
+        </div>
+        <form method="post">
+            <label>İçerik</label>
+            <br />
+            <input type="text" asp-for="Detail" class="form-control" />
+            <br />
+            <div class="d-flex justify-content-end mt-4 none-border">
+                <button class="btn btn-outline-success me-3 btn-rounded">Kaydet</button>
+                <a href="/AboutItem/AboutItemList/" class="btn btn-outline-danger me-2 btn-rounded">Vazgeç</a>
+            </div>
+        </form>
+    </div>
+</div>
