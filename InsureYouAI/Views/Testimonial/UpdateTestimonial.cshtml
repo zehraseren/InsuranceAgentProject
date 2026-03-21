@@ -1,0 +1,35 @@
+﻿@model UpdateTestimonialDto
+
+@{
+    ViewData["Title"] = "UpdateTestimonial";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex align-items-center">
+            <h5 class="mb-0">Referans Güncelleme</h5>
+            <br />
+            <br />
+        </div>
+        <form method="post">
+            <input type="hidden" asp-for="TestimonialId" />
+            <label>Ad Soyad</label>
+            <input type="text" asp-for="NameSurname" class="form-control" />
+            <br />
+            <label>Unvan</label>
+            <input type="text" asp-for="Title" class="form-control" />
+            <br />
+            <label>Yorum</label>
+            <input type="text" asp-for="CommentDetail" class="form-control" />
+            <br />
+            <label>Görsel Url</label>
+            <input type="text" asp-for="ImageUrl" class="form-control" />
+            <br />
+            <div class="d-flex justify-content-end mt-4 none-border">
+                <button class="btn btn-outline-success me-3 btn-rounded">Güncelle</button>
+                <a href="/Testimonial/TestimonialList/" class="btn btn-outline-danger me-2 btn-rounded">Vazgeç</a>
+            </div>
+        </form>
+    </div>
+</div>
