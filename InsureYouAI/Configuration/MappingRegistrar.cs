@@ -18,6 +18,7 @@ public static class MappingRegistrar
             cfg.AddProfile<SliderMapping>();
             cfg.AddProfile<TestimonialMapping>();
             cfg.AddProfile<TrailerVideoMapping>();
+            cfg.AddProfile<ArticleMapping>();
         });
 
         return services;
