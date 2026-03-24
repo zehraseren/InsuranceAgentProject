@@ -1,9 +1,10 @@
 ﻿using InsureYouAI.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace InsureYouAI.Context;
 
-public class InsureContext : DbContext
+public class InsureContext : IdentityDbContext<AppUser>
 {
     override protected void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
