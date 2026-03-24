@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using System.Text;
+using System.Text.Json;
 using InsureYouAI.Context;
 using InsureYouAI.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -62,5 +64,47 @@ public class AboutController : Controller
         _context.Abouts.Update(about);
         _context.SaveChanges();
         return RedirectToAction("AboutList");
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> CreateAboutWithGoogleGemini()
+    {
+        var apiKey = "YOUR_API_KEY_HERE";
+        var model = "gemini-2.5-flash";
+        var url = $"https://generativelanguage.googleapis.com/v1/models/{model}:generateContent?key={apiKey}";
+        var requestBody = new
+        {
+            contents = new[]
+            {
+                new
+                {
+                    parts = new[]
+                    {
+                        new
+                        {
+                            text = "Kurumsal bir sigorta firması için etkileyici, güven verici ve profesyonel 'Hakkımızda' yazısı oluştur.",
+                        }
+                    }
+                }
+            }
+        };
+
+        var content = new StringContent(JsonSerializer.Serialize(requestBody), Encoding.UTF8, "application/json");
+
+        using var httpClient = new HttpClient();
+        var response = await httpClient.PostAsync(url, content);
+        var responseJson = await response.Content.ReadAsStringAsync();
+
+        using var jsonDoc = JsonDocument.Parse(responseJson);
+        var aboutText = jsonDoc.RootElement
+            .GetProperty("candidates")[0]
+            .GetProperty("content")
+            .GetProperty("parts")[0]
+            .GetProperty("text")
+            .GetString();
+
+        ViewBag.aboutText = aboutText;
+
+        return View();
     }
 }
