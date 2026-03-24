@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "CreateAboutItemwithGoogleGemini";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h1>Google Gemini Hakkımızda Öğeleri Yazı Örneği</h1>
+<br />
+<hr />
+<br />
+<ul>
+    @foreach (var item in ViewBag.aboutItemText.ToString().Split('\n'))
+    {
+        <li>@item</li>
+    }
+</ul>
