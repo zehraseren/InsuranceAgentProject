@@ -1,10 +1,17 @@
 using InsureYouAI.Context;
+using InsureYouAI.Entities;
 using InsureYouAI.Configuration;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Register DbContext
 builder.Services.AddDbContext<InsureContext>();
+
+// Identity Configuration
+builder.Services.AddIdentity<AppUser, IdentityRole>()
+    .AddEntityFrameworkStores<InsureContext>()
+    .AddDefaultTokenProviders();
 
 // Configure AutoMapper
 builder.Services.AddMappings();
