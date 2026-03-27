@@ -1,0 +1,29 @@
+﻿@model DLHeaderContactViewModel
+
+<div class="offcanvas-menu">
+    <span class="menu-close"><i class="fas fa-times"></i></span>
+    <form role="search" method="get" id="searchform" class="searchform" action="http://wordpress.zcube.in/xconsulta/">
+        <input type="text" name="s" id="search" placeholder="Ara" />
+        <button><i class="fa fa-search"></i></button>
+    </form>
+                    
+    <div id="cssmenu3" class="menu-one-page-menu-container">
+        <ul class="menu">
+            <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="#">ANA SAYFA</a></li>
+            <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="#">HAKKIMIZDA</a></li>
+            <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="#">HİZMETLERİMİZ</a></li>
+            <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="#">PAKETLERİMİZ</a></li>
+            <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="#">MÜŞTERİ YORUMLARI</a></li>
+            <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="#">BLOGLAR</a></li>
+            <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="#">BİZE ULAŞIN</a></li>
+        </ul>
+    </div>
+                    
+    <div id="cssmenu2" class="menu-one-page-menu-container">
+        <ul id="menu-one-page-menu-12" class="menu">
+            <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="#home"><span>@Model.Phone</span></a></li>
+            <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="#howitwork"><span>@Model.Email</span></a></li>
+        </ul>
+    </div>
+</div>
+<div class="offcanvas-overly"></div>
