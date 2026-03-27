@@ -26,41 +26,9 @@
         @await Component.InvokeAsync("_DLSliderComponentPartial")
         
         @await Component.InvokeAsync("_DLAboutComponentPartial")
-        
-        <!-- service-area -->
-        <section class="service-details pb-60 p-relative fix">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-12 col-sm-12">
-                        <div class="services-box01 mb-30" data-aos="fade-left">
-                            <div class="number">01</div>
-                            <h5>Insurance Police</h5>
-                            <p>Nullam egestas eros et nulla tempus, vel tempor neque scelerisque. Morbi eleifend convallis turpis, ac scelerisque.</p>
-                            <a href="#" class="mt-15 hover-underline-animation">Learn More</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12">
-                        <div class="services-box01 mb-30" data-aos="fade-up" data-aos-duration="1000">
-                            <div class="number">02</div>
-                            <h5>Direct Payment</h5>
-                            <p>Nullam egestas eros et nulla tempus, vel tempor neque scelerisque. Morbi eleifend convallis turpis, ac scelerisque.</p>
-                            <a href="#" class="mt-15 hover-underline-animation">Learn More</a>
-                        </div>
-                    </div>
-                        
-                    <div class="col-lg-4 col-md-12 col-sm-12">
-                        <div class="services-box01 mb-30" data-aos="fade-right">
-                            <div class="number">03</div>
-                            <h5>24x7 Support</h5>
-                            <p>Nullam egestas eros et nulla tempus, vel tempor neque scelerisque. Morbi eleifend convallis turpis, ac scelerisque.</p>
-                            <a href="#" class="mt-15 hover-underline-animation">Learn More</a>
-                        </div>
-                    </div>
-                     
-                </div>
-            </div>
-        </section>
-        <!-- service-details2-area-end -->
+
+        @await Component.InvokeAsync("_DLInsureServiceComponentPartial")
+                
         <!-- video-area -->
         <section id="video" class="video-area p-relative" data-aos="fade-up" data-aos-duration="1000">
             <div class="container">
