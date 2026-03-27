@@ -8,4 +8,5 @@ public class AppUser : IdentityUser
     public string Surname { get; set; }
     public string ImageUrl { get; set; }
     public string Description { get; set; }
+    public List<Comment> Comments { get; set; }
 }
