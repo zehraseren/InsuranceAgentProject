@@ -33,50 +33,8 @@
         
         @await Component.InvokeAsync("_DLServiceComponentPartial")
 
-        <!-- counter-area -->
-        <div class="counter-area p-relative ">
-            <div class="container pt-50 pb-50">
-               
-                <div class="row p-relative">
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="single-counter" data-aos="fade-up" data-aos-duration="1000">
-                            <div class="counter p-relative">
-                                <span class="count">1547</span>
-                                <p>Project <br>Completed</p>
-                            </div>
-                               
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="single-counter" data-aos="fade-up" data-aos-duration="1300">
-                            <div class="counter p-relative">
-                                <span class="count">2587</span>
-                                <p>Our Happy <br>Clients</p>
-                            </div>
-                               
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="single-counter" data-aos="fade-up" data-aos-duration="1600">
-                            <div class="counter p-relative">
-                                <span class="count">1879</span>
-                                <p>Cup <br>Of Coffee</p>
-                            </div>
-                              
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="single-counter" data-aos="fade-up" data-aos-duration="1900">
-                            <div class="counter p-relative">
-                                <span class="count">2547</span>
-                                <p>Win <br>Awards</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- counter-area-end -->
+        @await Component.InvokeAsync("_DLCounterComponentPartial")
+
         <!-- skill-area -->
         <section id="skill" class="skill-area p-relative fix pt-120">
             <div class="container">
