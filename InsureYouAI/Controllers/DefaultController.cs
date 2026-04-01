@@ -8,4 +8,15 @@ public class DefaultController : Controller
     {
         return View();
     }
+
+    public PartialViewResult SendMessage()
+    {
+        return PartialView();
+    }
+
+    [HttpPost]
+    public PartialViewResult SendMessage(string message)
+    {
+        return PartialView();
+    }
 }
