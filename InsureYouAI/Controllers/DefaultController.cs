@@ -15,8 +15,19 @@ public class DefaultController : Controller
     }
 
     [HttpPost]
-    public PartialViewResult SendMessage(string message)
+    public IActionResult SendMessage(string message)
+    {
+        return View();
+    }
+    public PartialViewResult SubscribeEmail()
     {
         return PartialView();
     }
+
+    [HttpPost]
+    public IActionResult SubscribeEmail(string email)
+    {
+        return View();
+    }
+
 }
