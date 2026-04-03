@@ -37,16 +37,9 @@
                             @await Html.PartialAsync("SearchBlogs")
 
                             @await Component.InvokeAsync("_BLSocialMediaComponentPartial")
+
+                            @await Component.InvokeAsync("_BLCategoriesComponentPartial")
                             
-                            <section id="categories-1" class="widget widget_categories">
-                                <h2 class="widget-title">Categories</h2>
-                                <ul>
-                                    <li class="cat-item cat-item-16"><a href="#">Branding</a> (4)</li>
-                                    <li class="cat-item cat-item-23"><a href="#">Corporat</a> (3)</li>
-                                    <li class="cat-item cat-item-18"><a href="#">Design</a> (3)</li>
-                                    <li class="cat-item cat-item-22"><a href="#">Gallery</a> (3)</li>
-                                </ul>
-                            </section>
                             <section id="recent-posts-4" class="widget widget_recent_entries">
                                 <h2 class="widget-title">Recent Posts</h2>
                                 <ul>
