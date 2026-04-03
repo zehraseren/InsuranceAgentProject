@@ -25,94 +25,12 @@
 
         @await Component.InvokeAsync("_BLBreadcrumbComponentPartial")
       
-        <!-- inner-blog -->
         <section class="inner-blog pt-120 pb-120">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8">
-                        <div class="bsingle__post mb-50">
-                            <div class="bsingle__post-thumb">
-                                <img src="img/blog/inner_b1.jpg" alt="">
-                            </div>
-                            <div class="bsingle__content">
-                                <div class="meta-info">
-                                    <ul>
-                                        <li><i class="fal fa-user"></i>By Zcube</li>
-                                        <li><i class="fal fa-calendar-alt"></i>  24th March 2021</li>
-                                    </ul>
-                                </div>
-                                <h2>
-                                    <a href="blog-details.html">
-                                        Lorem ipsum dolor sit amet, consectetur
-                                        cing elit, sed do eiusmod tempor.
-                                    </a>
-                                </h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
-                                <div class="blog__btn">
-                                    <a href="#" class="btn">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bsingle__post mb-50">
-                            <div class="bsingle__post-thumb video-p">
-                                <img src="img/blog/inner_b2.jpg" alt="">
-                                <a href="https://www.youtube.com/watch?v=vKSA_idPZkc" class="video-i popup-video"><i class="fas fa-play"></i></a>
-                            </div>
-                            <div class="bsingle__content">
-                                <div class="meta-info">
-                                    <ul>
-                                        <li><i class="fal fa-user"></i>By Zcube</li>
-                                        <li><i class="far fa-comments"></i>35 Comments</li>
-                                    </ul>
-                                </div>
-                                <h2><a href="blog-details.html">There are many variations passages of like consectetur lorem ipsum available.</a></h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
-                                <div class="blog__btn">
-                                    <a href="#" class="btn">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bsingle__post mb-50">
-                            <div class="bsingle__post-thumb blog-active">
-                                <div class="slide-post">
-                                    <img src="img/blog/inner_b3.jpg" alt="">
-                                </div>
-                                <div class="slide-post">
-                                    <img src="img/blog/inner_b2.jpg" alt="">
-                                </div>
-                                <div class="slide-post">
-                                    <img src="img/blog/inner_b1.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="bsingle__content">
-                                <div class="meta-info">
-                                    <ul>
-                                        <li><i class="fal fa-user"></i>By Zcube</li>
-                                        <li><i class="fal fa-calendar-alt"></i>  24th March 2021</li>
-                                    </ul>
-                                </div>
-                                <h2><a href="blog-details.html">I must explain to you how all this mistaken idea of denouncing pleasure.</a></h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
-                                <div class="blog__btn">
-                                    <a href="#" class="btn">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                           
-                        <div class="pagination-wrap mb-50">
-                            <nav>
-                                <ul class="pagination">
-                                    <li class="page-item"><a href="#"><i class="fas fa-angle-double-left"></i></a></li>
-                                    <li class="page-item active"><a href="#">1</a></li>
-                                    <li class="page-item"><a href="#">2</a></li>
-                                    <li class="page-item"><a href="#">3</a></li>
-                                    <li class="page-item"><a href="#">...</a></li>
-                                    <li class="page-item"><a href="#">10</a></li>
-                                    <li class="page-item"><a href="#"><i class="fas fa-angle-double-right"></i></a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
+
+                    @await Component.InvokeAsync("_BLBlogListComponentPartial")
+               
                     <div class="col-sm-12 col-md-12 col-lg-4">
                         <aside class="sidebar-widget">
                             <section id="search-3" class="widget widget_search">
@@ -180,7 +98,7 @@
                 </div>
             </div>
         </section>
-        <!-- inner-blog-end -->
+
         @await Html.PartialAsync("SubscribeEmail")
 
     </main>
