@@ -1,0 +1,14 @@
+﻿@model List<BLTopArticleViewModel>
+
+<section id="recent-posts-4" class="widget widget_recent_entries">
+    <h2 class="widget-title">Son Makalaler</h2>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                <a href="/Blog/BlogDetail/@item.ArticleId">@item.Title.Substring(0,30)... </a>
+                <span class="post-date">| @item.CreatedTime.ToString("dd MMM yyyy")</span>
+            </li>
+        }
+    </ul>
+</section>
