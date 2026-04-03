@@ -33,16 +33,9 @@
                
                     <div class="col-sm-12 col-md-12 col-lg-4">
                         <aside class="sidebar-widget">
-                            <section id="search-3" class="widget widget_search">
-                                <h2 class="widget-title">Search</h2>
-                                <form role="search" method="get" class="search-form" action="http://wordpress.zcube.in/finco/">
-                                    <label>
-                                        <span class="screen-reader-text">Search for:</span>
-                                        <input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
-                                    </label>
-                                    <input type="submit" class="search-submit" value="Search" />
-                                </form>
-                            </section>
+
+                            @await Html.PartialAsync("SearchBlogs")
+                            
                             <section id="custom_html-5" class="widget_text widget widget_custom_html">
                                 <h2 class="widget-title">Follow Us</h2>
                                 <div class="textwidget custom-html-widget">

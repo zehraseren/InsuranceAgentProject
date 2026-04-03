@@ -8,4 +8,14 @@ public class BlogController : Controller
     {
         return View();
     }
+
+    public PartialViewResult SearchBlogs()
+    {
+        return PartialView();
+    }
+    [HttpPost]
+    public IActionResult SearchBlogs(string keyword)
+    {
+        return PartialView();
+    }
 }
