@@ -11,4 +11,6 @@ public class Article
     public int CategoryId { get; set; }
     public Category Category { get; set; }
     public List<Comment> Comments { get; set; }
+    public string? AppUserId { get; set; }
+    public AppUser AppUser { get; set; }
 }
