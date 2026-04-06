@@ -19,6 +19,7 @@ public static class MappingRegistrar
             cfg.AddProfile<TestimonialMapping>();
             cfg.AddProfile<TrailerVideoMapping>();
             cfg.AddProfile<ArticleMapping>();
+            cfg.AddProfile<CommentMapping>();
         });
 
         return services;

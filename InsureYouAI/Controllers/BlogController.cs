@@ -18,4 +18,9 @@ public class BlogController : Controller
     {
         return PartialView();
     }
+
+    public IActionResult BlogDetail()
+    {
+        return View();
+    }
 }
