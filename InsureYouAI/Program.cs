@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Register HttpClient
+builder.Services.AddHttpClient();
+
 // Register DbContext
 builder.Services.AddDbContext<InsureContext>();
 
