@@ -19,8 +19,8 @@ public class BlogController : Controller
         return PartialView();
     }
 
-    public IActionResult BlogDetail()
+    public IActionResult BlogDetail(int articleId)
     {
-        return View();
+        return View(articleId);
     }
 }

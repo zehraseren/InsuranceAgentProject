@@ -21,8 +21,6 @@ public class CommentController : Controller
     {
         var comments = _context.Comments.ProjectTo<ResultCommentDto>(_mapper.ConfigurationProvider).ToList();
 
-        var result = _mapper.Map<List<ResultCommentDto>>(comments);
-
-        return View(result);
+        return View(comments);
     }
 }
