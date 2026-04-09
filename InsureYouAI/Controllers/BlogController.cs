@@ -1,9 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using InsureYouAI.Context;
+using InsureYouAI.Entities;
+using Microsoft.AspNetCore.Mvc;
 
 namespace InsureYouAI.Controllers;
 
 public class BlogController : Controller
 {
+    private readonly InsureContext _context;
+
+    public BlogController(InsureContext context)
+    {
+        _context = context;
+    }
+
     public IActionResult BlogList()
     {
         return View();
@@ -19,8 +28,8 @@ public class BlogController : Controller
         return PartialView();
     }
 
-    public IActionResult BlogDetail(int articleId)
+    public IActionResult BlogDetail(int id)
     {
-        return View(articleId);
+        return View(id);
     }
 }
