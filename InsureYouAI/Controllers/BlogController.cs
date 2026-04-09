@@ -32,4 +32,21 @@ public class BlogController : Controller
     {
         return View(id);
     }
+
+    [HttpGet]
+    public PartialViewResult AddComment()
+    {
+        return PartialView();
+    }
+
+    [HttpPost]
+    public IActionResult AddComment(Comment comment)
+    {
+        comment.CommentDate = DateTime.Now;
+        comment.AppUserId = "8dcfb6c9-9620-40d9-8060-1e702870d001";
+        _context.Comments.Add(comment);
+        _context.SaveChanges();
+
+        return RedirectToAction("BlogList");
+    }
 }
