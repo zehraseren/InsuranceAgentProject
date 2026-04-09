@@ -10,4 +10,7 @@ public class AppUser : IdentityUser
     public string Description { get; set; }
     public List<Comment> Comments { get; set; }
     public List<Article> Articles { get; set; }
+    public string? Title { get; set; }
+    public string? Education { get; set; }
+    public string? City { get; set; }
 }
