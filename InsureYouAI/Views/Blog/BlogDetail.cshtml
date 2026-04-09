@@ -34,63 +34,8 @@
                             
                             @await Component.InvokeAsync("_BDNextAndPreviousPostComponentPartial")
 
-                            <div class="related__post mt-45 mb-85">
-                                <div class="post-title">
-                                    <h4>Related Post</h4>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="related-post-wrap mb-30">
-                                            <div class="post-thumb">
-                                                <img src="img/blog/b_details03.jpg" alt="">
-                                            </div>
-                                            <div class="rp__content">
-                                                <h3><a href="#">Auis nostrud exercita ullamco laboris nisi ut</a></h3>
-                                                <p>
-                                                    Lorem ipsum dolor sit amet, consectet ur adipisicing elit, sed do eiusmod temp or
-                                                    incididunt ut labore et dolore.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="related-post-wrap mb-30">
-                                            <div class="post-thumb">
-                                                <img src="img/blog/b_details04.jpg" alt="">
-                                            </div>
-                                            <div class="rp__content">
-                                                <h3><a href="#">Excepteur sint occaecat cupida tat non proident</a></h3>
-                                                <p>
-                                                    Lorem ipsum dolor sit amet, consectet ur adipisicing elit, sed do eiusmod temp or
-                                                    incididunt ut labore et dolore.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="avatar__wrap text-center mb-45">
-                                <div class="avatar-img">
-                                    <img src="img/blog/comment/avatar.png" alt="">
-                                </div>
-                                <div class="avatar__info">
-                                    <h5>Rosalina William</h5>
-                                    <div class="avatar__info-social">
-                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                        <a href="#"><i class="fab fa-behance"></i></a>
-                                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                                    </div>
-                                </div>
-                                <div class="avatar__wrap-content">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex ea commodo consequa aute irure dolor.
-                                    </p>
-                                </div>
-                            </div>
+                            @await Component.InvokeAsync("_BDAuthorInfoComponentPartial")
+
                             <div class="comment__wrap pb-45">
                                 <div class="comment__wrap-title">
                                     <h5>Comments</h5>
