@@ -1,0 +1,86 @@
+﻿@model GetAppUserProfileDto
+
+@{
+    ViewData["Title"] = "UserAIAnalysis";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="profile-cover bg-dark"></div>
+
+<div class="row">
+    <div class="col-12 col-lg-8">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <h5 class="mb-0">Kullanıcı AI Analiz Detayları</h5>
+                <hr>
+                <div class="card shadow-none border">
+                    <div class="card-header">
+                        <h6 class="mb-0">Kullanıcı İçerik AI Analizi</h6>
+                    </div>
+                    <div class="card-body">
+                        <pre style="white-space:pre-wrap; font-size:15px">@ViewBag.AIResult</pre>
+                    </div>
+                </div>
+                <div class="card shadow-none border">
+                    <div class="card-header">
+                        <h6 class="mb-0">Kullanıcı Yorum AI Analizi</h6>
+                    </div>
+                    <div class="card-body">
+                        <p>Buraya kullanıcının yorumlarıyla ilgili analiz gelecektir!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-lg-4">
+        <div class="card shadow-sm border-0 overflow-hidden">
+            <div class="card-body">
+                <div class="profile-avatar text-center">
+                    <img src="@Model.ImageUrl" class="rounded-circle shadow" width="120" height="120" alt="">
+                </div>
+                <div class="d-flex align-items-center justify-content-around mt-5 gap-3">
+                    <div class="text-center">
+                        <h4 class="mb-0">45</h4>
+                        <p class="mb-0 text-secondary">Takipçiler</p>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="mb-0">15</h4>
+                        <p class="mb-0 text-secondary">Fotoğraflar</p>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="mb-0">86</h4>
+                        <p class="mb-0 text-secondary">Yorumlar</p>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <h4 class="mb-1">@Model.NameSurname</h4>
+                    <p class="mb-0 text-secondary">@Model.City</p>
+                    <div class="mt-4"></div>
+                    <h6 class="mb-1">@Model.Title</h6>
+                    <p class="mb-0 text-secondary">@Model.Education</p>
+                </div>
+                <hr>
+                <div class="text-start">
+                    <h5 class="">Hakkında</h5>
+                    <p class="mb-0">
+                        @(Model.Description?.Length > 30 ? Model.Description.Substring(0, 30) + "..." : Model.Description)
+                    </p>
+                </div>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-top">
+                    Takipçiler
+                    <span class="badge bg-primary rounded-pill">95</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
+                    Takip Edilen
+                    <span class="badge bg-primary rounded-pill">75</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
+                    Makalaler
+                    <span class="badge bg-primary rounded-pill">14</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

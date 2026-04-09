@@ -12,5 +12,9 @@ public class AppUserMapping : Profile
         CreateMap<AppUser, ResultAppUserDto>()
             .ForMember(a => a.Author,
                 opt => opt.MapFrom(src => src.Name + " " + src.Surname));
+        // Read: DB → View
+        CreateMap<AppUser, GetAppUserProfileDto>()
+            .ForMember(ns => ns.NameSurname,
+                opt => opt.MapFrom(src => src.Name + " " + src.Surname));
     }
 }
