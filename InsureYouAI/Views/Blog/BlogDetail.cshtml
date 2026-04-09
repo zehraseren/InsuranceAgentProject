@@ -23,7 +23,7 @@
 
     @await Component.InvokeAsync("_DLMobileMenuComponentPartial")
 
-    <main>        
+    <main>
         <section class="inner-blog b-details-p pt-120 pb-120">
             <div class="container">
                 <div class="row">
@@ -31,26 +31,9 @@
                         <div class="blog-details-wrap">
 
                             @await Component.InvokeAsync("_BDArticleContentComponentPartial", new { articleId = Model })
+                            
+                            @await Component.InvokeAsync("_BDNextAndPreviousPostComponentPartial")
 
-                            <div class="posts_navigation pt-35 pb-35">
-                                <div class="row align-items-center">
-                                    <div class="col-xl-4 col-md-5">
-                                        <div class="prev-link">
-                                            <span>Prev Post</span>
-                                            <h4><a href="#">Tips Minimalist</a></h4>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-md-2 text-left text-md-center">
-                                        <a href="blog.html" class="blog-filter"><img src="img/icon/c_d01.png" alt=""></a>
-                                    </div>
-                                    <div class="col-xl-4 col-md-5">
-                                        <div class="next-link text-left text-md-right">
-                                            <span>next Post</span>
-                                            <h4><a href="#">Less Is More Deneme Yapıyoruzz BAkalım Nasıl Olacak?</a></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="related__post mt-45 mb-85">
                                 <div class="post-title">
                                     <h4>Related Post</h4>
