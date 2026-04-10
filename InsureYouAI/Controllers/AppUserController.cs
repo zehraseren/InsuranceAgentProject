@@ -131,4 +131,98 @@ public class AppUserController : Controller
 
         return View(userProfile);
     }
+
+    public async Task<IActionResult> UserCommentsAIAnalysis(string id)
+    {
+        var user = await _userManager.FindByIdAsync(id);
+        if (user == null) return NotFound();
+
+        var userProfile = _mapper.Map<GetAppUserProfileDto>(user);
+
+        // Kullanıcıya ait yorumlar
+        var comments = await _context.Comments
+            .Where(c => c.AppUserId == id)
+            .Select(c => c.CommentDetail)
+            .ToListAsync();
+
+        if (comments.Count == 0)
+        {
+            ViewBag.AIResult = "Bu kullanıcıya ait analiz yapılacak yorum bulunamadı!";
+            return View(userProfile);
+        }
+
+        // Yorumları tek bir metin halinde getirme
+        var allComments = string.Join("\n\n", comments);
+
+        var apiKey = "YOUR_API_KEY_HERE";
+
+        // Prompt oluşturma
+        var prompt = $@"
+            Siz bir sigorta sektöründe uzman bir içerik analistisin.
+            Elinizde, bir sigorta şirketinin çalışanının yazdığı tüm yorumlar var.
+            Bu yorumlar üzerinden çalışanın müşteri etkileşim tarzını analiz et.
+            
+            Analiz Başlıkları:
+            1) Genel Duygu Durumu (pozitif/negatif/nötr)
+            2) Toksik içerik var mı? (örnekleriyle)
+            3) İlgi alanları / konu başlıkları
+            4) İletişim tarzı (samimi, resmi, agresif vb.)
+            5) Geliştirilmesi gereken iletişim alanları
+            6) 5 Maddelik kısa özet
+
+            Yorumlar:
+            {allComments}
+            ";
+
+        // Google Gemini API'ye istek gönderme
+        var client = _httpClientFactory.CreateClient();
+
+        var body = new
+        {
+            contents = new[]
+            {
+                new
+                {
+                    parts = new[]
+                    {
+                        new { text = prompt}
+                    }
+                }
+            }
+        };
+
+        // Json Dönüşümleri
+        var json = JsonSerializer.Serialize(body);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var httpResponse = await client.PostAsync($"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={apiKey}", content);
+
+        var responseText = await httpResponse.Content.ReadAsStringAsync();
+
+        if (!httpResponse.IsSuccessStatusCode)
+        {
+            ViewBag.AIResult = $"Gemini Hatası: {httpResponse.StatusCode}";
+            return View(userProfile);
+        }
+
+        // Json Yapı İçinden Veriyi Okuma
+        try
+        {
+            using var doc = JsonDocument.Parse(responseText);
+            var aiText = doc.RootElement
+                .GetProperty("candidates")[0]
+                .GetProperty("content")
+                .GetProperty("parts")[0]
+                .GetProperty("text")
+                .GetString();
+
+            ViewBag.AIResult = aiText ?? "Boş yanıt döndü";
+        }
+        catch (Exception ex)
+        {
+            ViewBag.AIResult = $"Yanıt işlenirken hata: {ex.Message}";
+        }
+
+        return View(userProfile);
+    }
 }
