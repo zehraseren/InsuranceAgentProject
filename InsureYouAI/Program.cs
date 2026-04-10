@@ -1,3 +1,4 @@
+using InsureYouAI.Hubs;
 using InsureYouAI.Context;
 using InsureYouAI.Entities;
 using InsureYouAI.Configuration;
@@ -6,7 +7,13 @@ using Microsoft.AspNetCore.Identity;
 var builder = WebApplication.CreateBuilder(args);
 
 // Register HttpClient
-builder.Services.AddHttpClient();
+builder.Services.AddHttpClient("groq", c =>
+{
+    c.BaseAddress = new Uri("https://api.groq.com/openai/");
+});
+
+// Register SignalR
+builder.Services.AddSignalR();
 
 // Register DbContext
 builder.Services.AddDbContext<InsureContext>();
@@ -34,8 +41,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
-
 app.UseAuthorization();
+
+app.MapHub<ChatHub>("/chatHub");
 
 app.MapStaticAssets();
 
