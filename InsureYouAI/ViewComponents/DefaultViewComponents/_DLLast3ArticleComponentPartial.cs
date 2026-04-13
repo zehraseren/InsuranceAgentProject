@@ -18,11 +18,13 @@ public class _DLLast3ArticleComponentPartial : ViewComponent
     {
         var articles = _context.Articles
             .Include(a => a.Category)
+            .Include(au => au.AppUser)
             .OrderByDescending(a => a.ArticleId)
             .Take(3)
             .Select(a => new DLArticleViewModel
             {
                 Title = a.Title,
+                Author = a.AppUser.UserName + " " + a.AppUser.Surname,
                 CreatedTime = a.CreatedTime,
                 Content = a.Content,
                 CoverImageUrl = a.CoverImageUrl,

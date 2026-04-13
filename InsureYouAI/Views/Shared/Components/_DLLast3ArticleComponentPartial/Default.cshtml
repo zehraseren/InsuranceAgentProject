@@ -20,20 +20,19 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single-post2 hover-zoomin mb-30 wow fadeInUp animated" data-animation="fadeInUp" data-delay=".4s">
                         <div class="blog-thumb2">
-                            <a href="blog-details.html"><img src="@item.CoverImageUrl" alt="img"></a>
+                            <a href="blog-details.html"><img src="@item.CoverImageUrl" style="width:650px;height:300px;" alt="img"></a>
                         </div>
                         <div class="blog-content2">
                             <div class="b-meta">
                                 <div class="meta-info">
                                     <ul>
-                                        <li><i class="fal fa-user"></i>Admin</li>
-                                        <li><i class="fal fa-user"></i>@item.CategoryName</li>
+                                        <li><i class="fal fa-user"></i>@item.Author</li>
                                         <li><i class="fal fa-calendar-alt"></i>@item.CreatedTime.ToString("dd MMM yyyy")</li>
                                     </ul>
                                 </div>
                             </div>
-                            <h4><a href="blog-details.html">@item.Title</a></h4>
-                            <p>@item.Content.Substring(0, 120)...</p>
+                            <h4><a href="blog-details.html">@item.Title?.Substring(0, Math.Min(25, item.Title.Length))...</a></h4>
+                            <p>@item.Content?.Substring(0, Math.Min(120, item.Content.Length))...</p>
                         </div>
                     </div>
                 </div>
