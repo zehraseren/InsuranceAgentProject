@@ -21,6 +21,7 @@ public static class MappingRegistrar
             cfg.AddProfile<ArticleMapping>();
             cfg.AddProfile<CommentMapping>();
             cfg.AddProfile<AppUserMapping>();
+            cfg.AddProfile<GroqAIMessageMapping>();
         });
 
         return services;
