@@ -26,6 +26,12 @@ public class BlogController : Controller
     {
         return PartialView();
     }
+
+    public IActionResult ArticlesByCategory(int id)
+    {
+        return View(id);
+    }
+
     [HttpPost]
     public IActionResult SearchBlogs(string keyword)
     {
@@ -50,7 +56,6 @@ public class BlogController : Controller
         comment.AppUserId = "8dcfb6c9-9620-40d9-8060-1e702870d001";
 
         var client = _httpClientFactory.CreateClient();
-
 
         var apiKey = "YOUR_API_KEY_HERE";
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);

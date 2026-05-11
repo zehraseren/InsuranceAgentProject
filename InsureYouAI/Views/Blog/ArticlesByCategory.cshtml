@@ -1,0 +1,64 @@
+﻿@model int
+
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+@await Component.InvokeAsync("_DLHeadComponentPartial")
+
+<body>
+
+    <header class="header-area header-three">
+
+        @await Component.InvokeAsync("_DLHeaderComponentPartial")
+
+        @await Component.InvokeAsync("_DLHeaderContactComponentPartial")
+
+        @await Component.InvokeAsync("_DLNavbarComponentPartial")
+       
+    </header>
+
+    @await Component.InvokeAsync("_DLMobileMenuComponentPartial")
+ 
+    <main>
+
+        @await Component.InvokeAsync("_BLBreadcrumbComponentPartial")
+      
+        <section class="inner-blog pt-120 pb-120">
+            <div class="container">
+                <div class="row">
+
+                    @await Component.InvokeAsync("_BLSearchArticlesByCategoryComponentPartial", new { id = Model })
+               
+                    <div class="col-sm-12 col-md-12 col-lg-4">
+                        <aside class="sidebar-widget">
+
+                            @await Html.PartialAsync("SearchBlogs")
+
+                            @await Component.InvokeAsync("_BLSocialMediaComponentPartial")
+
+                            @await Component.InvokeAsync("_BLCategoriesComponentPartial")
+                            
+                            @await Component.InvokeAsync("_BLTopArticlesComponentPartial")
+                           
+                            @await Component.InvokeAsync("_BLTagsComponentPartial")
+
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        @await Html.PartialAsync("SubscribeEmail")
+
+    </main>
+
+    @await Component.InvokeAsync("_DLFooterComponentPartial")
+   
+    @await Component.InvokeAsync("_DLScriptsComponentPartial")
+
+</body>
+</html>
