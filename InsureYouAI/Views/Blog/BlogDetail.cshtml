@@ -32,7 +32,7 @@
 
                             @await Component.InvokeAsync("_BDArticleContentComponentPartial", new { articleId = Model })
                             
-                            @await Component.InvokeAsync("_BDNextAndPreviousPostComponentPartial")
+                            @await Component.InvokeAsync("_BDNextAndPreviousPostComponentPartial", new { id = Model })
 
                             @await Component.InvokeAsync("_BDAuthorInfoComponentPartial")
 
