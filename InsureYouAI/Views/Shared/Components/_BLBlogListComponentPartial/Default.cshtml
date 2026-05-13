@@ -1,4 +1,5 @@
-﻿@model List<BLBlogListViewModel>
+﻿@using System.Text.RegularExpressions
+@model List<BLBlogListViewModel>
 
 <div class="col-lg-8">
     @foreach (var item in Model)
@@ -21,7 +22,7 @@
                         @item.Title
                     </a>
                 </h2>
-                <p>@item.Content.Substring(0, 350)...</p>
+                <p>@Html.Raw(Regex.Replace(item.Content, "<.*?>", "").Substring(0, Math.Min(350, item.Content.Length)))...</p>
                 <div class="blog__btn">
                     <a href="/Blog/BlogDetail/@item.ArticleId" class="btn">Devamını Oku</a>
                 </div>

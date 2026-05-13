@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using InsureYouAI.Models;
 using InsureYouAI.Context;
 using InsureYouAI.Entities;
 using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Mvc;
 using InsureYouAI.Dtos.ArticleDtos;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace InsureYouAI.Controllers;
 
@@ -28,16 +30,29 @@ public class ArticleController : Controller
     [HttpGet]
     public IActionResult CreateArticle()
     {
-        return View();
+        var model = new CreateArticleViewModel();
+        PopulateDropdowns(model);
+
+        return View(model);
     }
 
     [HttpPost]
-    public IActionResult CreateArticle(CreateArticleDto cadto)
+    public IActionResult CreateArticle(CreateArticleViewModel cavm)
     {
-        cadto.CreatedTime = DateTime.Now;
-        var article = _mapper.Map<Article>(cadto);
+        ModelState.Remove(nameof(cavm.Categories));
+        ModelState.Remove(nameof(cavm.Authors));
+
+        if (!ModelState.IsValid)
+        {
+            PopulateDropdowns(cavm);
+            return View(cavm);
+        }
+
+        cavm.Article.CreatedTime = DateTime.Now;
+        var article = _mapper.Map<Article>(cavm.Article);
         _context.Articles.Add(article);
         _context.SaveChanges();
+
         return RedirectToAction("ArticleList");
     }
 
@@ -129,5 +144,22 @@ public class ArticleController : Controller
     {
         public string role { get; set; }
         public string content { get; set; }
+    }
+
+    private void PopulateDropdowns(CreateArticleViewModel cavm)
+    {
+        cavm.Categories = _context.Categories
+            .Select(c => new SelectListItem
+            {
+                Value = c.CategoryId.ToString(),
+                Text = c.CategoryName
+            }).ToList();
+
+        cavm.Authors = _context.Users
+            .Select(u => new SelectListItem
+            {
+                Value = u.Id,
+                Text = u.Name + " " + u.Surname
+            }).ToList();
     }
 }

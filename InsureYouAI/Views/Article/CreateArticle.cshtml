@@ -1,4 +1,4 @@
-﻿@model CreateArticleDto
+﻿@model CreateArticleViewModel
 
 @{
     ViewData["Title"] = "CreateArticle";
@@ -12,26 +12,59 @@
             <br />
             <br />
         </div>
-        <form method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <form method="post" asp-action="CreateArticle" asp-controller="Article">
             <label>Başlık</label>
-            <input type="text" asp-for="Title" class="form-control" />
+            <input type="text" asp-for="Article.Title" class="form-control" />
             <br />
             <label>Kapak Fotoğrafı Url</label>
-            <input type="text" asp-for="CoverImageUrl" class="form-control" />
+            <input type="text" asp-for="Article.CoverImageUrl" class="form-control" />
             <br />
             <label>Ana Kapak Fotoğrafı Url</label>
-            <input type="text" asp-for="MainCoverImageUrl" class="form-control" />
+            <input type="text" asp-for="Article.MainCoverImageUrl" class="form-control" />
             <br />
             <label>Kategori</label>
-            <input type="text" asp-for="CategoryId" class="form-control" />
+            <select asp-for="Article.CategoryId" asp-items="Model.Categories" class="form-select">
+                <option value="0">-- Kategori Seçin --</option>
+            </select>
+            <br />
+            <label>Yazar</label>
+            <select asp-for="Article.AppUserId" asp-items="Model.Authors" class="form-select">
+                <option value="0">-- Yazar Seçin --</option>
+            </select>
             <br />
             <label>İçerik</label>
-            <textarea asp-for="Content" rows="15" class="form-control"></textarea>
+            <textarea asp-for="Article.Content" id="Content" rows="15" class="form-control"></textarea>
             <br />
             <div class="d-flex justify-content-end mt-4 none-border">
-                <button class="btn btn-outline-success me-3 btn-rounded">Kaydet</button>
+                <button class="btn btn-outline-success me-3 btn-rounded">Oluştur</button>
                 <a href="/Article/ArticleList/" class="btn btn-outline-danger me-2 btn-rounded">Vazgeç</a>
             </div>
         </form>
     </div>
 </div>
+
+﻿<script src="https://cdn.ckeditor.com/4.20.1/standard-all/ckeditor.js"></script>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+        if (document.getElementById("Content")) {
+            CKEDITOR.replace("Content", {
+                height: 400,
+                extraPlugins: 'colorbutton,font',
+                toolbar: [
+                    { name: 'document', items: ['Source', '-', 'Preview'] },
+                    { name: 'clipboard', items: ['Cut', 'Copy', 'Paste', '-', 'Undo', 'Redo'] },
+                    { name: 'styles', items: ['Format', 'Font', 'FontSize'] },
+                    { name: 'colors', items: ['TextColor', 'BGColor'] },
+                    { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat'] },
+                    { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight'] },
+                    { name: 'insert', items: ['Image', 'Table', 'Link', 'Unlink'] },
+                    { name: 'tools', items: ['Maximize'] }
+                ]
+            });
+        }
+    });    
+
+</script>
