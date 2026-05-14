@@ -23,6 +23,7 @@ public class _DLServiceComponentPartial : ViewComponent
                 IconUrl = s.IconUrl,
                 ImageUrl = s.ImageUrl
             }).ToList();
+
         return View(services);
     }
 }

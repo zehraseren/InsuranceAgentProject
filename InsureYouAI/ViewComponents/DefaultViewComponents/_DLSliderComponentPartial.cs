@@ -23,6 +23,7 @@ public class _DLSliderComponentPartial : ViewComponent
                 Description = s.Description,
                 ImageUrl = s.ImageUrl,
             }).ToList();
+
         return View(sliders);
     }
 }

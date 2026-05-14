@@ -1,6 +1,5 @@
 ﻿using InsureYouAI.Context;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using InsureYouAI.Models.DefaultViewModels;
 
 namespace InsureYouAI.ViewComponents.DefaultViewComponents;
@@ -17,8 +16,6 @@ public class _DLLast3ArticleComponentPartial : ViewComponent
     public IViewComponentResult Invoke()
     {
         var articles = _context.Articles
-            .Include(a => a.Category)
-            .Include(au => au.AppUser)
             .OrderByDescending(a => a.ArticleId)
             .Take(3)
             .Select(a => new DLArticleViewModel

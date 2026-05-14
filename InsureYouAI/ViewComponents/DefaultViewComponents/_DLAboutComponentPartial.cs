@@ -1,5 +1,6 @@
 ﻿using InsureYouAI.Context;
 using Microsoft.AspNetCore.Mvc;
+using InsureYouAI.Models.DefaultViewModels;
 
 namespace InsureYouAI.ViewComponents.DefaultViewComponents;
 
@@ -14,12 +15,12 @@ public class _DLAboutComponentPartial : ViewComponent
 
     public IViewComponentResult Invoke()
     {
-        var about = _context.Abouts.FirstOrDefault();
-        var model = new Models.DefaultViewModels.DLAboutViewModel
+        var aboutInfo = _context.Abouts.FirstOrDefault();
+        var model = new DLAboutViewModel
         {
-            Title = about.Title,
-            Description = about.Description,
-            ImageUrl = about.ImageUrl,
+            Title = aboutInfo.Title,
+            Description = aboutInfo.Description,
+            ImageUrl = aboutInfo.ImageUrl,
             Details = _context.AboutItems.Select(ai => ai.Detail).ToList()
         };
 
