@@ -1,6 +1,5 @@
 ﻿using InsureYouAI.Context;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using InsureYouAI.Models.BlogDetailViewModels;
 
 namespace InsureYouAI.ViewComponents.BlogDetailViewComponents;
@@ -17,9 +16,6 @@ public class _BDArticleContentComponentPartial : ViewComponent
     public IViewComponentResult Invoke(int articleId)
     {
         var articles = _context.Articles
-        .Include(ca => ca.Category)
-        .Include(u => u.AppUser)
-        .Include(cu => cu.Comments)
         .Where(a => a.ArticleId == articleId)
         .Select(a => new BDArticleContentViewModel
         {

@@ -1,6 +1,5 @@
 ﻿using InsureYouAI.Context;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using InsureYouAI.Models.BlogListViewModels;
 
 namespace InsureYouAI.ViewComponents.BlogListViewComponents;
@@ -17,9 +16,6 @@ public class _BLBlogListComponentPartial : ViewComponent
     public IViewComponentResult Invoke()
     {
         var articles = _context.Articles
-             .Include(a => a.Category)
-             .Include(u => u.AppUser)
-             .Include(c => c.Comments)
              .Select(a => new BLBlogListViewModel
              {
                  ArticleId = a.ArticleId,

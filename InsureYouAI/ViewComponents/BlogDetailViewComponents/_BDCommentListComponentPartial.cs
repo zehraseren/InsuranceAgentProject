@@ -1,6 +1,5 @@
 ﻿using InsureYouAI.Context;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using InsureYouAI.Models.BlogDetailViewModels;
 
 namespace InsureYouAI.ViewComponents.BlogDetailViewComponents;
@@ -20,7 +19,6 @@ public class _BDCommentListComponentPartial : ViewComponent
         var commentCount = _context.Comments.Count(x => x.ArticleId == articleId && x.CommentStatus == approvedStatus);
 
         var comments = _context.Comments
-            .Include(a => a.AppUser)
             .Where(c => c.ArticleId == articleId && c.CommentStatus == approvedStatus)
             .Select(c => new BDCommentViewModel
             {
