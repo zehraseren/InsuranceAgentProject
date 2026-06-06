@@ -1,4 +1,4 @@
-﻿@model List<DSHPolicyGroupViewModel>
+﻿@model List<DSHSalesForecastViewModel>
 
 @functions {
     string GetEmoji(string policyType)
@@ -13,13 +13,19 @@
             _ => "📄"
         };
     }
+
+    string GetForecastMonthName()
+    {
+        var nextMonth = DateTime.Now.AddMonths(1);
+        return nextMonth.ToString("MMMM yyyy", new System.Globalization.CultureInfo("tr-TR"));
+    }
 }
 
 <div class="col-12 col-lg-6 col-xl-6 d-flex">
     <div class="card rounded-4 w-100">
         <div class="card-body">
             <div class="d-flex align-items-center mb-3">
-                <h6 class="mb-0">En Çok Satılan Poliçeler</h6>
+                <h6 class="mb-0">@GetForecastMonthName() Tahmini Poliçe Satışları</h6>
             </div>
             @foreach (var item in Model)
             {
@@ -34,8 +40,8 @@
                             <p class="my-2">
                                 @item.PolicyType
                                 <span class="float-end">
-                                    (@item.Count Poliçe Satışı)
-                                    <span class="ms-3 fw-bold">%@item.Percentage</span>
+                                    (@item.ForecastCount Poliçe Satışı)
+                                    <span class="ms-3 fw-bold">%@item.Percentage%</span>
                                 </span>
                             </p>
                             <div class="progress" style="height:4px;">
