@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using InsureYouAI.Context;
 using InsureYouAI.Entities;
+using InsureYouAI.Attributes;
 using Microsoft.AspNetCore.Mvc;
 using InsureYouAI.Dtos.ContactDtos;
 
@@ -17,6 +18,7 @@ public class ContactController : Controller
         _mapper = mapper;
     }
 
+    [PageInfo("İletişim", "İletişim Listesi")]
     public IActionResult ContactList()
     {
         var contacts = _context.Contacts.ToList();
@@ -25,12 +27,14 @@ public class ContactController : Controller
     }
 
     [HttpGet]
+    [PageInfo("İletişim", "İletişim Oluştur")]
     public IActionResult CreateContact()
     {
         return View();
     }
 
     [HttpPost]
+    [PageInfo("İletişim", "İletişim Oluştur")]
     public IActionResult CreateContact(CreateContactDto ccidto)
     {
         var contact = _mapper.Map<Contact>(ccidto);
@@ -48,6 +52,7 @@ public class ContactController : Controller
     }
 
     [HttpGet]
+    [PageInfo("İletişim", "İletişim Güncelle")]
     public IActionResult UpdateContact(int id)
     {
         var contact = _context.Contacts.Find(id);
@@ -56,6 +61,7 @@ public class ContactController : Controller
     }
 
     [HttpPost]
+    [PageInfo("İletişim", "İletişim Güncelle")]
     public IActionResult UpdateContact(UpdateContactDto ucidto)
     {
         var contact = _mapper.Map<Contact>(ucidto);

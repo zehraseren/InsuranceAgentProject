@@ -2,6 +2,7 @@
 using System.Text.Json;
 using InsureYouAI.Context;
 using InsureYouAI.Entities;
+using InsureYouAI.Attributes;
 using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Mvc;
 using InsureYouAI.Dtos.TestimonialDtos;
@@ -19,6 +20,7 @@ public class TestimonialController : Controller
         _mapper = mapper;
     }
 
+    [PageInfo("Referanslar", "Referans Listesi")]
     public IActionResult TestimonialList()
     {
         var testimonials = _context.Testimonials.ToList();
@@ -27,12 +29,14 @@ public class TestimonialController : Controller
     }
 
     [HttpGet]
+    [PageInfo("Referanslar", "Referans Oluştur")]
     public IActionResult CreateTestimonial()
     {
         return View();
     }
 
     [HttpPost]
+    [PageInfo("Referanslar", "Referans Oluştur")]
     public IActionResult CreateTestimonial(CreateTestimonialDto ctdto)
     {
         var testimonial = _mapper.Map<Testimonial>(ctdto);
@@ -50,6 +54,7 @@ public class TestimonialController : Controller
     }
 
     [HttpGet]
+    [PageInfo("Referanslar", "Referans Güncelle")]
     public IActionResult UpdateTestimonial(int id)
     {
         var testimonial = _context.Testimonials.Find(id);
@@ -58,6 +63,7 @@ public class TestimonialController : Controller
     }
 
     [HttpPost]
+    [PageInfo("Referanslar", "Referans Güncelle")]
     public IActionResult UpdateTestimonial(UpdateTestimonialDto utdto)
     {
         var testimonial = _mapper.Map<Testimonial>(utdto);
@@ -66,6 +72,7 @@ public class TestimonialController : Controller
         return RedirectToAction("TestimonialList");
     }
 
+    [PageInfo("Referanslar", "Claude AI ile Referans Oluştur")]
     public async Task<IActionResult> CreateTestimonialWithClaudeAI()
     {
         var apiKey = "YOUR_API_KEY_HERE";

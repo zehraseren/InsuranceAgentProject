@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using InsureYouAI.Context;
 using InsureYouAI.Entities;
+using InsureYouAI.Attributes;
 using Microsoft.AspNetCore.Mvc;
 using InsureYouAI.Dtos.PricingPlanDtos;
 
@@ -17,6 +18,7 @@ public class PricingPlanController : Controller
         _mapper = mapper;
     }
 
+    [PageInfo("Ödeme Planı", "Ödeme Planı Listesi")]
     public IActionResult PricingPlanList()
     {
         var pricingPlans = _context.PricingPlans.ToList();
@@ -25,12 +27,14 @@ public class PricingPlanController : Controller
     }
 
     [HttpGet]
+    [PageInfo("Ödeme Planı", "Ödeme Planı Oluştur")]
     public IActionResult CreatePricingPlan()
     {
         return View();
     }
 
     [HttpPost]
+    [PageInfo("Ödeme Planı", "Ödeme Planı Oluştur")]
     public IActionResult CreatePricingPlan(CreatePricingPlanDto cppdto)
     {
         var pricingPlan = _mapper.Map<PricingPlan>(cppdto);
@@ -48,6 +52,7 @@ public class PricingPlanController : Controller
     }
 
     [HttpGet]
+    [PageInfo("Ödeme Planı", "Ödeme Planı Güncelle")]
     public IActionResult UpdatePricingPlan(int id)
     {
         var pricingPlan = _context.PricingPlans.Find(id);
@@ -56,6 +61,7 @@ public class PricingPlanController : Controller
     }
 
     [HttpPost]
+    [PageInfo("Ödeme Planı", "Ödeme Planı Güncelle")]
     public IActionResult UpdatePricingPlan(UpdatePricingPlanDto uppdto)
     {
         var pricingPlan = _mapper.Map<PricingPlan>(uppdto);

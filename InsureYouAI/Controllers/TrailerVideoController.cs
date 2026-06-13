@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using InsureYouAI.Context;
 using InsureYouAI.Entities;
+using InsureYouAI.Attributes;
 using Microsoft.AspNetCore.Mvc;
 using InsureYouAI.Dtos.TrailerVideoDtos;
 
@@ -17,6 +18,7 @@ public class TrailerVideoController : Controller
         _mapper = mapper;
     }
 
+    [PageInfo("Tanıtım Videloları", "Tanıtım Videoları Listesi")]
     public IActionResult TrailerVideoList()
     {
         var trailerVideos = _context.TrailerVideos.ToList();
@@ -25,12 +27,14 @@ public class TrailerVideoController : Controller
     }
 
     [HttpGet]
+    [PageInfo("Tanıtım Videloları", "Tanıtım Videosu Oluştur")]
     public IActionResult CreateTrailerVideo()
     {
         return View();
     }
 
     [HttpPost]
+    [PageInfo("Tanıtım Videloları", "Tanıtım Videosu Oluştur")]
     public IActionResult CreateTrailerVideo(CreateTrailerVideoDto ctvdto)
     {
         var trailerVideo = _mapper.Map<TrailerVideo>(ctvdto);
@@ -48,6 +52,7 @@ public class TrailerVideoController : Controller
     }
 
     [HttpGet]
+    [PageInfo("Tanıtım Videloları", "Tanıtım Videosu Güncelle")]
     public IActionResult UpdateTrailerVideo(int id)
     {
         var trailerVideo = _context.TrailerVideos.Find(id);
@@ -56,6 +61,7 @@ public class TrailerVideoController : Controller
     }
 
     [HttpPost]
+    [PageInfo("Tanıtım Videloları", "Tanıtım Videosu Güncelle")]
     public IActionResult UpdateTrailerVideo(UpdateTrailerVideoDto utvdto)
     {
         var trailerVideo = _mapper.Map<TrailerVideo>(utvdto);

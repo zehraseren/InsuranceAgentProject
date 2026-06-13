@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using InsureYouAI.Context;
 using InsureYouAI.Entities;
+using InsureYouAI.Attributes;
 using Microsoft.AspNetCore.Mvc;
 using InsureYouAI.Dtos.MessageDtos;
 
@@ -17,6 +18,7 @@ public class MessageController : Controller
         _mapper = mapper;
     }
 
+    [PageInfo("Mesajlar", "Mesaj Listesi")]
     public IActionResult MessageList()
     {
         var messages = _context.Messages.ToList();
@@ -25,12 +27,14 @@ public class MessageController : Controller
     }
 
     [HttpGet]
+    [PageInfo("Mesajlar", "Mesaj Oluştur")]
     public IActionResult CreateMessage()
     {
         return View();
     }
 
     [HttpPost]
+    [PageInfo("Mesajlar", "Mesaj Oluştur")]
     public IActionResult CreateMessage(CreateMessageDto cmdto)
     {
         cmdto.IsRead = false;
@@ -50,6 +54,7 @@ public class MessageController : Controller
     }
 
     [HttpGet]
+    [PageInfo("Mesajlar", "Mesaj Güncelle")]
     public IActionResult UpdateMessage(int id)
     {
         var message = _context.Messages.Find(id);
@@ -58,6 +63,7 @@ public class MessageController : Controller
     }
 
     [HttpPost]
+    [PageInfo("Mesajlar", "Mesaj Güncelle")]
     public IActionResult UpdateMessage(UpdateMessageDto umdto)
     {
         var message = _mapper.Map<Message>(umdto);

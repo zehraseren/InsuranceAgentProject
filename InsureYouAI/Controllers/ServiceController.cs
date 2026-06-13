@@ -2,6 +2,7 @@
 using System.Text.Json;
 using InsureYouAI.Context;
 using InsureYouAI.Entities;
+using InsureYouAI.Attributes;
 using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Mvc;
 using InsureYouAI.Dtos.ServiceDtos;
@@ -19,6 +20,7 @@ public class ServiceController : Controller
         _mapper = mapper;
     }
 
+    [PageInfo("Hizmetler", "Hizmet Listesi")]
     public IActionResult ServiceList()
     {
         var services = _context.Services.ToList();
@@ -27,12 +29,14 @@ public class ServiceController : Controller
     }
 
     [HttpGet]
+    [PageInfo("Hizmetler", "Hizmet Oluştur")]
     public IActionResult CreateService()
     {
         return View();
     }
 
     [HttpPost]
+    [PageInfo("Hizmetler", "Hizmet Oluştur")]
     public IActionResult CreateService(CreateServiceDto csdto)
     {
         var service = _mapper.Map<Service>(csdto);
@@ -50,6 +54,7 @@ public class ServiceController : Controller
     }
 
     [HttpGet]
+    [PageInfo("Hizmetler", "Hizmet Güncelle")]
     public IActionResult UpdateService(int id)
     {
         var service = _context.Services.Find(id);
@@ -58,6 +63,7 @@ public class ServiceController : Controller
     }
 
     [HttpPost]
+    [PageInfo("Hizmetler", "Hizmet Güncelle")]
     public IActionResult UpdateService(UpdateServiceDto usdto)
     {
         var service = _mapper.Map<Service>(usdto);
@@ -66,6 +72,7 @@ public class ServiceController : Controller
         return RedirectToAction("ServiceList");
     }
 
+    [PageInfo("Hizmetler", "Claude AI ile Hizmet Oluştur")]
     public async Task<IActionResult> CreateServiceWithAnthropicClaude()
     {
         var apiKey = "YOUR_API_KEY_HERE";

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using InsureYouAI.Context;
 using InsureYouAI.Entities;
+using InsureYouAI.Attributes;
 using Microsoft.AspNetCore.Mvc;
 using InsureYouAI.Dtos.SliderDtos;
 
@@ -17,6 +18,7 @@ public class SliderController : Controller
         _mapper = mapper;
     }
 
+    [PageInfo("Slider", "Slider Listesi")]
     public IActionResult SliderList()
     {
         var sliders = _context.Sliders.ToList();
@@ -25,12 +27,14 @@ public class SliderController : Controller
     }
 
     [HttpGet]
+    [PageInfo("Slider", "Slider Oluştur")]
     public IActionResult CreateSlider()
     {
         return View();
     }
 
     [HttpPost]
+    [PageInfo("Slider", "Slider Oluştur")]
     public IActionResult CreateSlider(CreateSliderDto csdto)
     {
         var slider = _mapper.Map<Slider>(csdto);
@@ -48,6 +52,7 @@ public class SliderController : Controller
     }
 
     [HttpGet]
+    [PageInfo("Slider", "Slider Güncelle")]
     public IActionResult UpdateSlider(int id)
     {
         var slider = _context.Sliders.Find(id);
@@ -56,6 +61,7 @@ public class SliderController : Controller
     }
 
     [HttpPost]
+    [PageInfo("Slider", "Slider Güncelle")]
     public IActionResult UpdateSlider(UpdateSliderDto usdto)
     {
         var slider = _mapper.Map<Slider>(usdto);

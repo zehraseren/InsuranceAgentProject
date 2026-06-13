@@ -3,6 +3,7 @@ using System.Text;
 using System.Text.Json;
 using InsureYouAI.Context;
 using InsureYouAI.Entities;
+using InsureYouAI.Attributes;
 using Microsoft.AspNetCore.Mvc;
 using InsureYouAI.Dtos.AboutDtos;
 
@@ -19,6 +20,7 @@ public class AboutController : Controller
         _mapper = mapper;
     }
 
+    [PageInfo("Hakkımızda", "Hakkımızda Listesi")]
     public IActionResult AboutList()
     {
         var abouts = _context.Abouts.ToList();
@@ -27,12 +29,14 @@ public class AboutController : Controller
     }
 
     [HttpGet]
+    [PageInfo("Hakkımızda", "Yeni Hakkımızda Ekle")]
     public IActionResult CreateAbout()
     {
         return View();
     }
 
     [HttpPost]
+    [PageInfo("Hakkımızda", "Yeni Hakkımızda Ekle")]
     public IActionResult CreateAbout(CreateAboutDto cadto)
     {
         var about = _mapper.Map<About>(cadto);
@@ -50,6 +54,7 @@ public class AboutController : Controller
     }
 
     [HttpGet]
+    [PageInfo("Hakkımızda", "Hakkımızda Güncelle")]
     public IActionResult UpdateAbout(int id)
     {
         var about = _context.Abouts.Find(id);
@@ -58,6 +63,7 @@ public class AboutController : Controller
     }
 
     [HttpPost]
+    [PageInfo("Hakkımızda", "Hakkımızda Güncelle")]
     public IActionResult UpdateAbout(UpdateAboutDto uadto)
     {
         var about = _mapper.Map<About>(uadto);
@@ -67,6 +73,7 @@ public class AboutController : Controller
     }
 
     [HttpGet]
+    [PageInfo("Hakkımızda", "Google Gemini ile Hakkımızda Oluştur")]
     public async Task<IActionResult> CreateAboutWithGoogleGemini()
     {
         var apiKey = "YOUR_API_KEY_HERE";

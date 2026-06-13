@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using InsureYouAI.Context;
 using InsureYouAI.Entities;
+using InsureYouAI.Attributes;
 using Microsoft.AspNetCore.Mvc;
 using InsureYouAI.Dtos.CategoryDtos;
 
@@ -17,6 +18,7 @@ public class CategoryController : Controller
         _mapper = mapper;
     }
 
+    [PageInfo("Kategoriler", "Kategori Listesi")]
     public IActionResult CategoryList()
     {
         var categories = _context.Categories.ToList();
@@ -25,12 +27,14 @@ public class CategoryController : Controller
     }
 
     [HttpGet]
+    [PageInfo("Kategoriler", "Yeni Kategori Ekle")]
     public IActionResult CreateCategory()
     {
         return View();
     }
 
     [HttpPost]
+    [PageInfo("Kategoriler", "Yeni Kategori Ekle")]
     public IActionResult CreateCategory(CreateCategoryDto ccdto)
     {
         var category = _mapper.Map<Category>(ccdto);
@@ -48,6 +52,7 @@ public class CategoryController : Controller
     }
 
     [HttpGet]
+    [PageInfo("Kategoriler", "Kategori Güncelle")]
     public IActionResult UpdateCategory(int id)
     {
         var category = _context.Categories.Find(id);
@@ -56,6 +61,7 @@ public class CategoryController : Controller
     }
 
     [HttpPost]
+    [PageInfo("Kategoriler", "Kategori Güncelle")]
     public IActionResult UpdateCategory(UpdateCategoryDto ucdto)
     {
         var category = _mapper.Map<Category>(ucdto);

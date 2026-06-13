@@ -2,6 +2,7 @@
 using InsureYouAI.Models;
 using InsureYouAI.Context;
 using InsureYouAI.Entities;
+using InsureYouAI.Attributes;
 using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Mvc;
 using InsureYouAI.Dtos.ArticleDtos;
@@ -20,6 +21,7 @@ public class ArticleController : Controller
         _mapper = mapper;
     }
 
+    [PageInfo("Makaleler", "Makale Listesi")]
     public IActionResult ArticleList()
     {
         var articles = _context.Articles.ToList();
@@ -28,6 +30,7 @@ public class ArticleController : Controller
     }
 
     [HttpGet]
+    [PageInfo("Makaleler", "Makale Oluştur")]
     public IActionResult CreateArticle()
     {
         var model = new CreateArticleViewModel();
@@ -37,6 +40,7 @@ public class ArticleController : Controller
     }
 
     [HttpPost]
+    [PageInfo("Makaleler", "Makale Oluştur")]
     public IActionResult CreateArticle(CreateArticleViewModel cavm)
     {
         ModelState.Remove(nameof(cavm.Categories));
@@ -65,6 +69,7 @@ public class ArticleController : Controller
     }
 
     [HttpGet]
+    [PageInfo("Makaleler", "Makale Güncelle")]
     public IActionResult UpdateArticle(int id)
     {
         var article = _context.Articles.Find(id);
@@ -73,6 +78,7 @@ public class ArticleController : Controller
     }
 
     [HttpPost]
+    [PageInfo("Makaleler", "Makale Güncelle")]
     public IActionResult UpdateArticle(UpdateArticleDto uadto)
     {
         var article = _mapper.Map<Article>(uadto);
@@ -82,12 +88,14 @@ public class ArticleController : Controller
     }
 
     [HttpGet]
+    [PageInfo("Makaleler", "Open AI ile Makale Oluştur")]
     public IActionResult CreateArticleWithOpenAI()
     {
         return View();
     }
 
     [HttpPost]
+    [PageInfo("Makaleler", "Open AI ile Makale Oluştur")]
     public async Task<IActionResult> CreateArticleWithOpenAI(string prompt)
     {
         var apiKey = "YOUR_API_KEY_HERE";

@@ -1,6 +1,7 @@
 ﻿using InsureYouAI.Models;
 using InsureYouAI.Context;
 using InsureYouAI.Services;
+using InsureYouAI.Attributes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InsureYouAI.Controllers;
@@ -16,6 +17,7 @@ public class ForecastController : Controller
         _forecastService = new ForecastService();
     }
 
+    [PageInfo("Tahmin", "Tahmin Listesi")]
     public IActionResult Index()
     {
         // Veritabanından poliçeleri çekip aylık bazda gruplayarak satış verisi oluştur

@@ -1,4 +1,5 @@
 using InsureYouAI.Hubs;
+using InsureYouAI.Filters;
 using InsureYouAI.Context;
 using InsureYouAI.Entities;
 using InsureYouAI.Configuration;
@@ -27,7 +28,10 @@ builder.Services.AddIdentity<AppUser, IdentityRole>()
 builder.Services.AddMappings();
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Filters.Add<PageInfoFilter>();
+});
 
 var app = builder.Build();
 

@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
-using InsureYouAI.Context;
-using InsureYouAI.Dtos.AboutItemDtos;
-using InsureYouAI.Entities;
-using Microsoft.AspNetCore.Mvc;
 using System.Text;
 using System.Text.Json;
+using InsureYouAI.Context;
+using InsureYouAI.Entities;
+using InsureYouAI.Attributes;
+using Microsoft.AspNetCore.Mvc;
+using InsureYouAI.Dtos.AboutItemDtos;
 
 namespace InsureYouAI.Controllers;
 
@@ -19,6 +20,7 @@ public class AboutItemController : Controller
         _mapper = mapper;
     }
 
+    [PageInfo("Hakkımızda Alanları", "Hakkımızda Alanları Listesi")]
     public IActionResult AboutItemList()
     {
         var aboutItems = _context.AboutItems.ToList();
@@ -27,12 +29,14 @@ public class AboutItemController : Controller
     }
 
     [HttpGet]
+    [PageInfo("Hakkımızda Alanları", "Yeni Hakkımızda Alanı Ekle")]
     public IActionResult CreateAboutItem()
     {
         return View();
     }
 
     [HttpPost]
+    [PageInfo("Hakkımızda Alanları", "Yeni Hakkımızda Alanı Ekle")]
     public IActionResult CreateAboutItem(CreateAboutItemDto caidto)
     {
         var aboutItem = _mapper.Map<AboutItem>(caidto);
@@ -50,6 +54,7 @@ public class AboutItemController : Controller
     }
 
     [HttpGet]
+    [PageInfo("Hakkımızda Alanları", "Hakkımızda Alanı Güncelle")]
     public IActionResult UpdateAboutItem(int id)
     {
         var aboutItem = _context.AboutItems.Find(id);
@@ -58,6 +63,7 @@ public class AboutItemController : Controller
     }
 
     [HttpPost]
+    [PageInfo("Hakkımızda Alanları", "Hakkımızda Alanı Güncelle")]
     public IActionResult UpdateAboutItem(UpdateAboutItemDto uaidto)
     {
         var aboutItem = _mapper.Map<AboutItem>(uaidto);
@@ -67,6 +73,7 @@ public class AboutItemController : Controller
     }
 
     [HttpGet]
+    [PageInfo("Hakkımızda Alanları", "Google Gemini ile Hakkımızda Alanı Oluştur")]
     public async Task<IActionResult> CreateAboutItemwithGoogleGemini()
     {
         var apiKey = "YOUR_API_KEY_HERE";
