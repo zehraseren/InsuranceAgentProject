@@ -6,6 +6,7 @@ using InsureYouAI.Attributes;
 using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Mvc;
 using InsureYouAI.Dtos.ArticleDtos;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace InsureYouAI.Controllers;
@@ -24,8 +25,9 @@ public class ArticleController : Controller
     [PageInfo("Makaleler", "Makale Listesi")]
     public IActionResult ArticleList()
     {
-        var articles = _context.Articles.ToList();
+        var articles = _context.Articles.Include(a => a.AppUser).ToList();
         var result = _mapper.Map<List<ResultArticleDto>>(articles);
+
         return View(result);
     }
 
@@ -73,17 +75,31 @@ public class ArticleController : Controller
     public IActionResult UpdateArticle(int id)
     {
         var article = _context.Articles.Find(id);
-        var result = _mapper.Map<UpdateArticleDto>(article);
-        return View(result);
+        var uadto = _mapper.Map<UpdateArticleDto>(article);
+
+        var model = new UpdateArticleViewModel { Article = uadto };
+        PopulateDropdowns(model);
+
+        return View(model);
     }
 
     [HttpPost]
     [PageInfo("Makaleler", "Makale Güncelle")]
-    public IActionResult UpdateArticle(UpdateArticleDto uadto)
+    public IActionResult UpdateArticle(UpdateArticleViewModel uavm)
     {
-        var article = _mapper.Map<Article>(uadto);
+        ModelState.Remove(nameof(uavm.Categories));
+        ModelState.Remove(nameof(uavm.Authors));
+
+        if (!ModelState.IsValid)
+        {
+            PopulateDropdowns(uavm);
+            return View(uavm);
+        }
+
+        var article = _mapper.Map<Article>(uavm.Article);
         _context.Articles.Update(article);
         _context.SaveChanges();
+
         return RedirectToAction("ArticleList");
     }
 
@@ -154,16 +170,16 @@ public class ArticleController : Controller
         public string content { get; set; }
     }
 
-    private void PopulateDropdowns(CreateArticleViewModel cavm)
+    private void PopulateDropdowns(dynamic model)
     {
-        cavm.Categories = _context.Categories
+        model.Categories = _context.Categories
             .Select(c => new SelectListItem
             {
                 Value = c.CategoryId.ToString(),
                 Text = c.CategoryName
             }).ToList();
 
-        cavm.Authors = _context.Users
+        model.Authors = _context.Users
             .Select(u => new SelectListItem
             {
                 Value = u.Id,

@@ -8,5 +8,6 @@ public class UpdateArticleDto
     public string Content { get; set; }
     public string CoverImageUrl { get; set; }
     public string MainCoverImageUrl { get; set; }
+    public string AppUserId { get; set; }
     public int CategoryId { get; set; }
 }

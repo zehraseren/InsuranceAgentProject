@@ -1,4 +1,4 @@
-﻿@model UpdateArticleDto
+﻿@model UpdateArticleViewModel
 
 @{
     ViewData["Title"] = "UpdateArticle";
@@ -12,21 +12,28 @@
             <br />
         </div>
         <form method="post">
-            <input type="hidden" asp-for="ArticleId" />
+            <input type="hidden" asp-for="Article.ArticleId" />
             <label>Başlık</label>
-            <input type="text" asp-for="Title" class="form-control" />
+            <input type="text" asp-for="Article.Title" class="form-control" />
             <br />
             <label>Kapak Fotoğrafı Url</label>
-            <input type="text" asp-for="CoverImageUrl" class="form-control" />
+            <input type="text" asp-for="Article.CoverImageUrl" class="form-control" />
             <br />
             <label>Ana Kapak Fotoğrafı Url</label>
-            <input type="text" asp-for="MainCoverImageUrl" class="form-control" />
+            <input type="text" asp-for="Article.MainCoverImageUrl" class="form-control" />
             <br />
             <label>Kategori</label>
-            <input type="text" asp-for="CategoryId" class="form-control" />
+            <select asp-for="Article.CategoryId" asp-items="Model.Categories" class="form-select">
+                <option value="0">-- Kategori Seçin --</option>
+            </select>
+            <br />
+            <label>Yazar</label>
+            <select asp-for="Article.AppUserId" asp-items="Model.Authors" class="form-select">
+                <option value="0">-- Yazar Seçin --</option>
+            </select>
             <br />
             <label>İçerik</label>
-            <textarea asp-for="Content" rows="15" class="form-control"></textarea>
+            <textarea asp-for="Article.Content" rows="15" class="form-control"></textarea>
             <br />
             <div class="d-flex justify-content-end mt-4 none-border">
                 <button class="btn btn-outline-success me-3 btn-rounded">Güncelle</button>

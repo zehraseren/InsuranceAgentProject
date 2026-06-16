@@ -9,7 +9,8 @@ public class ArticleMapping : Profile
     public ArticleMapping()
     {
         // Read: DB → View
-        CreateMap<Article, ResultArticleDto>();
+        CreateMap<Article, ResultArticleDto>()
+            .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.AppUser.Name + " " + src.AppUser.Surname));
         // Create: Form → DB
         CreateMap<CreateArticleDto, Article>();
         // Update: DB → Form (HttpGet) ve Form → DB (HttpPost) | ReverseMap ile iki yönlü

@@ -34,12 +34,12 @@
                         <tr>
                             <td>@count</td>
                             <td>@item.Title</td>
-                            <td>Yazar Adı</td>
+                            <td>@item.AuthorName</td>
                             <td>@item.CreatedTime.ToString("dd MMM yyyy")</td>
                             <td>
                                 <div class="table-actions d-flex align-items-center gap-3 fs-6">
                                     <!-- View -->
-                                    <a href="#" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Sitede Gör"><i class="bi bi-eye-fill"></i></a>
+                                    <a href="/Blog/BlogDetail/@item.ArticleId" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Sitede Gör"><i class="bi bi-eye-fill"></i></a>
                                 
                                     <!-- Update -->
                                     <a href="/Article/UpdateArticle/@item.ArticleId" class="text-success" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Güncelle"><i class="bi bi-pencil-fill"></i></a>
@@ -53,6 +53,7 @@
                 </tbody>
             </table>
             <a href="/Article/CreateArticle/" class="btn btn-outline-primary">Yeni Makale Girişi</a>
+            <a href="/Article/CreateArticleWithOpenAI/" class="btn btn-outline-dark">Yapay Zeka ile Makale Oluştur</a>
         </div>
     </div>
 </div>
