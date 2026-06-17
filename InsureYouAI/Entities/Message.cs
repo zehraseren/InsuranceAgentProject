@@ -1,4 +1,6 @@
-﻿namespace InsureYouAI.Entities;
+﻿using InsureYouAI.Enums;
+
+namespace InsureYouAI.Entities;
 
 public class Message
 {
@@ -7,6 +9,8 @@ public class Message
     public string Subject { get; set; }
     public string Email { get; set; }
     public string MessageDetail { get; set; }
+    public string? AICategory { get; set; }
+    public MessagePriority Priority { get; set; }
     public DateTime SendDate { get; set; }
     public bool IsRead { get; set; }
 }
