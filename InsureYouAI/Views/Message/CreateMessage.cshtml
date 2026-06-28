@@ -12,7 +12,7 @@
             <br />
             <br />
         </div>
-        <form method="post">
+        <form asp-action="CreateMessage" asp-controller="Message" method="post">
             <label>Ad Soyad</label>
             <input type="tel" asp-for="NameSurname" class="form-control" />
             <br />
@@ -26,7 +26,7 @@
             <textarea asp-for="MessageDetail" rows="3" class="form-control"></textarea>
             <br />
             <div class="d-flex justify-content-end mt-4 none-border">
-                <button class="btn btn-outline-success me-3 btn-rounded">Kaydet</button>
+                <button type="submit" class="btn btn-outline-success me-3 btn-rounded">Kaydet</button>
                 <a href="/Message/MessageList/" class="btn btn-outline-danger me-2 btn-rounded">Vazgeç</a>
             </div>
         </form>

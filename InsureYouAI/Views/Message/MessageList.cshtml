@@ -23,8 +23,7 @@
                         <th>Ad Soyad</th>
                         <th>Email</th>
                         <th>Tarih</th>
-                        <th>Konu</th>
-                        <th>Mesaj</th>
+                        <th>AI Kategori</th>
                         <th>Mesajı Aç</th>
                         <th>Durum</th>
                         <th>Güncelle</th>
@@ -40,8 +39,7 @@
                             <td>@item.NameSurname</td>
                             <td>@item.Email</td>
                             <td>@item.SendDate.ToString("dd MMM yyyy")</td>
-                            <td>@item.Subject</td>
-                            <td>@item.MessageDetail</td>
+                            <td>@item.AICategory</td>
                             <td>
                                 <a href="#" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Mesajı Aç"><i class="bi bi-eye-fill"></i></a>
                             </td>
@@ -57,7 +55,7 @@
                             </td>
                             <td>
                                 <div class="table-actions d-flex align-items-center gap-3 fs-6">
-                                
+
                                     <a href="/Message/DeleteMessage/@item.MessageId" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Sil"><i class="bi bi-trash-fill"></i></a>
                                 </div>
                             </td>

@@ -2,6 +2,7 @@ using InsureYouAI.Hubs;
 using InsureYouAI.Filters;
 using InsureYouAI.Context;
 using InsureYouAI.Entities;
+using InsureYouAI.Services;
 using InsureYouAI.Configuration;
 using Microsoft.AspNetCore.Identity;
 
@@ -23,6 +24,9 @@ builder.Services.AddDbContext<InsureContext>();
 builder.Services.AddIdentity<AppUser, IdentityRole>()
     .AddEntityFrameworkStores<InsureContext>()
     .AddDefaultTokenProviders();
+
+// Register AIService
+builder.Services.AddScoped<AIService>();
 
 // Configure AutoMapper
 builder.Services.AddMappings();
