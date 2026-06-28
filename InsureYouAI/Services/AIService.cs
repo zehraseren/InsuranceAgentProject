@@ -15,7 +15,7 @@ public class AIService
         _httpClient = httpClient;
     }
 
-    // Kullanıcı mesajını analiz eder
+    // Kullanıcı mesajını analiz eder ve Category + Priority dönme
     public async Task<AIClassificationResult> AnalyzeMessageAsync(string messageText)
     {
         var url = $"https://generativelanguage.googleapis.com/v1beta/models/{_model}:generateContent?key={_apiKey}";
@@ -52,7 +52,7 @@ public class AIService
         // JSON içinden model çıktısı çekilmesi
         var rawText = ExtractText(result);
 
-        // Model çıktısı parse edilmesi (Category)
+        // Model çıktısı parse edilmesi (Category | Priority)
         return ParseResult(rawText);
     }
 
@@ -63,10 +63,14 @@ public class AIService
         return $"""
 Aşağıdaki sigorta mesajını analiz et.
 
-ÇIKTI FORMATI : Category
+ÇIKTI FORMATI (KESİN):
+Category|Priority
 
 Kategori seçenekleri:
 Kasko, Trafik Sigortası, Sağlık Sigortası, Konut Sigortası, Hasar Bildirimi, Fiyat Teklifi, Poliçe Yenileme, Genel Soru, İletişim Talebi
+
+Priority seçenekleri:
+High, Medium, Low
 
 Kurallar:
 - Sadece tek satır döndür
@@ -99,20 +103,29 @@ Mesaj:
         }
     }
 
-    // Model çıktısını Category'e ayırması 
-    // Beklenen format: Category
+    // Model çıktısını Category ve Priority'e ayırması 
+    // Beklenen format: Category|Priority
     private AIClassificationResult ParseResult(string text)
     {
         // Boş veya hatalı output gelirse fallback'e düşmesi
         if (string.IsNullOrWhiteSpace(text)) return Fallback();
 
-        var category = text
+        // Model bazen newline veya code block ekleyebilir → temizlenmesi için
+        var cleaned = text
             .Replace("```", "")
+            .Replace("\n", "")
             .Trim();
+
+        // Pipe separator üzerinden ayrıştırma
+        var parts = cleaned.Split('|', StringSplitOptions.RemoveEmptyEntries);
+
+        var category = parts.ElementAtOrDefault(0)?.Trim() ?? "Genel Soru";
+        var priority = parts.ElementAtOrDefault(1)?.Trim() ?? "Low";
 
         return new AIClassificationResult
         {
-            Category = category
+            Category = category,
+            Priority = priority
         };
     }
 
@@ -122,7 +135,8 @@ Mesaj:
     {
         return new AIClassificationResult
         {
-            Category = "Genel Soru"
+            Category = "Genel Soru",
+            Priority = "Low"
         };
     }
 }

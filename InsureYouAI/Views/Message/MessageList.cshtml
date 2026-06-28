@@ -24,6 +24,7 @@
                         <th>Email</th>
                         <th>Tarih</th>
                         <th>AI Kategori</th>
+                        <th>Öncelik</th>
                         <th>Mesajı Aç</th>
                         <th>Durum</th>
                         <th>Güncelle</th>
@@ -40,6 +41,7 @@
                             <td>@item.Email</td>
                             <td>@item.SendDate.ToString("dd MMM yyyy")</td>
                             <td>@item.AICategory</td>
+                            <td>@item.Priority.GetBadge()</td>
                             <td>
                                 <a href="#" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Mesajı Aç"><i class="bi bi-eye-fill"></i></a>
                             </td>

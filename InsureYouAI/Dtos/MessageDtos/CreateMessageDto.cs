@@ -9,6 +9,7 @@ public class CreateMessageDto
     public string Email { get; set; }
     public string MessageDetail { get; set; }
     public string? AICategory { get; set; }
+    public MessagePriority Priority { get; set; }
     public DateTime SendDate { get; set; }
     public bool IsRead { get; set; }
 }

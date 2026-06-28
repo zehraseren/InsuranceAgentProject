@@ -48,6 +48,12 @@ public class MessageController : Controller
         var result = await _aIService.AnalyzeMessageAsync(combinedText);
 
         cmdto.AICategory = result.Category;
+
+        if (Enum.TryParse<MessagePriority>(result.Priority, true, out var parsedPriority))
+            cmdto.Priority = parsedPriority;
+        else
+            cmdto.Priority = MessagePriority.Low;
+
         cmdto.IsRead = false;
         cmdto.SendDate = DateTime.Now;
 
