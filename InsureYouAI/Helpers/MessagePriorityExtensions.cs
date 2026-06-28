@@ -15,6 +15,6 @@ public static class MessagePriorityExtensions
             _ => "bg-secondary"
         };
 
-        return new HtmlString($"<span class='badge {css}'>{priority}</span>");
+        return new HtmlString($"<span class='badge {css}'>{priority.GetDisplayName()}</span>");
     }
 }
