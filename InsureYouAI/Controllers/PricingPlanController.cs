@@ -33,6 +33,18 @@ public class PricingPlanController : Controller
         return View(result);
     }
 
+    public IActionResult ChangeStatus(int id)
+    {
+        var value = _context.PricingPlans.Find(id);
+
+        if (value == null) return NotFound();
+
+        value.IsFeature = !value.IsFeature;
+
+        _context.SaveChanges();
+        return RedirectToAction("PricingPlanList");
+    }
+
     [HttpGet]
     [PageInfo("Ödeme Planı", "Ödeme Planı Oluştur")]
     public IActionResult CreatePricingPlan()
