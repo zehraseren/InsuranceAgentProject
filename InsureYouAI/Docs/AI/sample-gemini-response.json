@@ -1,0 +1,35 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "Bu PDF, bir kasko sigorta poliçesine aittir.\n\n# 1) Poliçeyi Özetle\n1.  Bu kasko sigorta poliçesi, motorlu taşıtın kullanım veya park halindeyken maruz kalabileceği maddi zararları teminat altına alır.\n2.  Poliçe, Türk Ticaret Kanunu, Sigortacılık Kanunu ve kasko sigortası genel şartları çerçevesinde düzenlenmiştir.\n3.  Sigortalı, poliçeyi kabul etmekle tüm hak ve yükümlülükleri okuduğunu ve onayladığını taahhüt eder.\n4.  Kapsam, çarpma, hırsızlık, yangın ve doğal afetler gibi ana riskleri içerirken, ek teminatlarla genişletilebilir.\n5.  Poliçenin geçerliliği, sigortalının doğru beyanlarına ve aracın ekspertizle belirlenen özelliklerine dayanır.\n6.  Hasar anında sigortalının olayı en kısa sürede bildirmesi ve gerekli belgeleri sunması zorunludur.\n7.  Onarım süreçleri, anlaşmalı servisler aracılığıyla yürütülür ve yedek araç hizmeti belirli koşullarda sağlanabilir.\n8.  Poliçe, kasıtlı zararlar, mevzuat ihlalleri ve doğal bozulmalar gibi durumları teminat dışı bırakır.\n9.  Prim hesaplaması, araç değeri, sürücü profili, coğrafi risk ve seçilen teminatlar gibi birçok faktöre göre yapılır.\n10. Poliçe genellikle bir yıl süreli olup, yenileme ve iptal koşulları sigorta hukukunun genel ilkelerine göre belirlenir.\n\n# 2) Neleri Kapsar\n1.  Araç, başka bir araçla, sabit veya hareketli cisimle temas etmesi sonucu oluşan fiziksel hasarlar teminat altındadır.\n2.  Aracın devrilmesi veya yuvarlanması sonucu meydana gelen zararlar poliçe kapsamındadır.\n3.  Yangın, infilak, dahili su hasarı gibi olaylardan kaynaklanan kayıp ve hasarlar karşılanır.\n4.  Hırsızlık veya hırsızlığa teşebbüs sonucu aracın çalınması veya parça kaybı teminat dâhilindedir.\n5.  Üçüncü kişilerin kötü niyetli hareketleri veya vandalizm niteliğindeki zararları güvence altına alınır.\n6.  Sel, su baskını, dolu hasarı, fırtına ve deprem gibi doğal afetler sonucunda oluşan hasarlar belirli limitler dâhilinde karşılanır.\n7.  Ek prim karşılığında mini onarım, anahtar kaybı ve cam teminatı gibi ek güvenceler eklenebilir.\n8.  Ferdi kaza, hukuki koruma ve ihtiyari mali mesuliyet gibi ek teminatlar da poliçeye dâhil edilebilir.\n9.  Aracın marka ve modeline göre orijinal, eşdeğer veya OEM parçalarla yapılan onarımlar karşılanır.\n10. Hasarsızlık indirimi, düzenli ve güvenli sürüş davranışları sergileyen sigortalılara sunulan bir avantajdır.\n\n# 3) Neleri Kapsamaz\n1.  Sigortalı veya çıkar ilişkisi olan kişiler tarafından kasten verilen zararlar teminat dışıdır.\n2.  Sahte kaza senaryoları oluşturulması veya hasarı manipüle etme girişimleri poliçe kapsamı dışındadır.\n3.  Aracın beyan edilen kullanım tarzı dışında kullanılması, örneğin hususi aracın ticari taşımacılıkta kullanılması, teminatı daraltabilir veya kaldırabilir.\n4.  Yetkisiz, ehliyetsiz veya sürüş yasağı bulunan kişiler tarafından kullanılan araçlarda oluşan hasarlar karşılanmaz.\n5.  Aşırı hız, izinsiz yarış, drift veya gösteri sürüşü gibi riskli davranışlar sonucu meydana gelen zararlar teminat dışıdır.\n6.  Alkol, uyuşturucu veya bilinç bozucu ilaç etkisi altındaki sürücü tarafından oluşan hasarlar hiçbir koşulda güvence altına alınmaz.\n7.  Aracın aşınma, yıpranma, mekanik arızalar, düzenli bakım eksiklikleri veya üretim hataları teminat konusu değildir.\n8.  Lastik aşınması, koltuk döşemesi deformasyonu, boya solması ve kullanım kaynaklı korozyon gibi doğal bozulmalar poliçe kapsamında sayılmaz.\n9.  Volkanik patlama, savaş, isyan, ayaklanma, terör faaliyetleri veya devlet otoritelerinin el koyma işlemleri kapsam dışıdır.\n10. Aracın fabrika standartları dışında yetkisiz modifiye edilmesi veya orijinal dışı donanım eklenmesi risk seviyesini artırarak kapsamı daraltabilir.\n\n# 4) Kritik Uyarılar\n1.  Poliçe düzenlenirken aracın tüm bilgilerinin doğru ve eksiksiz beyan edilmesi zorunludur, aksi takdirde teminatlar geçersiz sayılabilir.\n2.  Olası bir hasar durumunda, olayın en kısa sürede sigorta şirketine bildirilmesi ve gerekli tüm belgelerin sunulması hayati öneme sahiptir.\n3.  Poliçe dönemi boyunca aracın kullanım amacında, değerinde veya güvenlik donanımlarında yapılan değişiklikler sigorta şirketine bildirilmelidir.\n4.  Prim ödemelerinin zamanında yapılması, poliçenin kesintisiz geçerliliği için kritik olup, gecikmeler teminatın askıya alınmasına yol açabilir.\n5.  Sigortalı, hasar anında zararın büyümesini engellemek için makul önlemleri almakla yükümlüdür, aksi halde tazminat tutarında kesinti yapılabilir."
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 3035,
+    "candidatesTokenCount": 1285,
+    "totalTokenCount": 10173,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 197
+      },
+      {
+        "modality": "DOCUMENT",
+        "tokenCount": 2838
+      }
+    ],
+    "thoughtsTokenCount": 5853,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-2.5-flash",
+  "responseId": "dM9XauiYNa_RvdIP7cfYwQQ"
+}

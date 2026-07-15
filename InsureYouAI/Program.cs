@@ -27,6 +27,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>()
 
 // Register AIService
 builder.Services.AddScoped<AIService>();
+builder.Services.AddScoped<PolicyAnalysisService>();
 
 // Configure AutoMapper
 builder.Services.AddMappings();
