@@ -1,0 +1,28 @@
+﻿@model VoiceAIViewModel
+
+@{
+    ViewData["Title"] = "TextToSpeech";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h2>Eleven Labs - Metni Sese Dönüştür</h2>
+<form asp-action="TextToSpeech" method="post">
+    <input type="hidden" asp-for="Mode" />
+    <textarea asp-for="Text" class="form-control" rows="5" placeholder="Metin girin..."></textarea>
+    <br />
+    <button class="btn btn-outline-primary">Sesi Oluştur</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Error))
+{
+    <div class="alert alert-danger mt-3">@Model.Error</div>
+}
+
+@if (!string.IsNullOrEmpty(Model.AudioUrl))
+{
+    <h4 class="mt-4">Oluşturulan Ses:</h4>
+    <audio controls>
+        <source src="@Model.AudioUrl" type="audio/mpeg" />
+        Tarayıcınız audio elementini desteklemiyor.
+    </audio>
+}
